@@ -7,9 +7,9 @@ module.exports = {
   env: {
     browser: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', "react-app"],
   plugins: ['react'],
   rules: {
-
+    "no-console": 0
   }
 }

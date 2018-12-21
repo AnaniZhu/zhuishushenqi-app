@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from '../../logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      value: ''
+    }
+    this.handleInputChnage = this.handleInputChnage.bind(this)
+  }
+  handleInputChnage (event) {
+    this.setState({
+      value: event.target.value.toUpperCase()
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -19,6 +31,7 @@ class App extends Component {
           >
             Learn React
           </a>
+          <input value={this.state.value} onChange={this.handleInputChnage} />
         </header>
       </div>
     );

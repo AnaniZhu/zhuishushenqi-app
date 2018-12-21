@@ -74,7 +74,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 };
 
 const generateAlias = () => {
-  const dir = path.resolve('../src')
+  const dir = path.resolve('src')
   let files = fs.readdirSync(dir)
   return files.reduce((aliasObj, filename) => {
     const stats = fs.statSync(path.join(dir, filename))
