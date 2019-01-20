@@ -22,6 +22,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
+const theme = require('../package.json').theme;
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -53,6 +54,8 @@ const useTypeScript = fs.existsSync(paths.appTsConfig);
 // style files regexes
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
@@ -104,16 +107,38 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 };
 
 const generateAlias = () => {
-  const dir = path.resolve('../src')
+  const dir = path.resolve(__dirname, '../src')
   let files = fs.readdirSync(dir)
   return files.reduce((aliasObj, filename) => {
     const stats = fs.statSync(path.join(dir, filename))
     if (stats.isDirectory()) {
-      aliasObj[filename] = path.resolve(__dirname, 'src', filename)
+      aliasObj[filename] = path.resolve(__dirname, '../src', filename)
     }
     return aliasObj
   }, {})
 };
+
+// const chunkSorters = require('html-webpack-plugin/lib/chunksorter')
+// const depSort = chunkSorters.dependency
+// chunkSorters.auto = chunkSorters.dependency = (chunks, ...args) => {
+//   try {
+//     return depSort(chunks, ...args)
+//   } catch (e) {
+//     // fallback to a manual sort if that happens...
+//     return chunks.sort((a, b) => {
+//       // make sure user entry is loaded last so user CSS can override
+//       // vendor CSS
+//       if (a.id === 'app') {
+//         return 1
+//       } else if (b.id === 'app') {
+//         return -1
+//       } else if (a.entry !== b.entry) {
+//         return b.entry ? -1 : 1
+//       }
+//       return 0
+//     })
+//   }
+// }
 
 // This is the production configuration.
 // It compiles slowly and is focused on producing a fast and minimal bundle.
@@ -236,6 +261,7 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      '@': path.resolve(__dirname, '../src'),
       ...generateAlias()
     },
     plugins: [
@@ -381,6 +407,26 @@ module.exports = {
               getLocalIdent: getCSSModuleLocalIdent,
             }),
           },
+          {
+            test: lessRegex,
+            exclude: lessModuleRegex,
+            use: [
+                'style-loader',
+                'css-loader',
+                {loader: 'less-loader', options: {modifyVars: theme}},
+            ]
+          },
+          {
+              test: lessModuleRegex,
+              use: getStyleLoaders(
+                {
+                  importLoaders: 2,
+                  modules: true,
+                  getLocalIdent: getCSSModuleLocalIdent,
+                },
+                'less-loader'
+              ),
+          },
           // Opt-in support for SASS. The logic here is somewhat similar
           // as in the CSS routine, except that "sass-loader" runs first
           // to compile SASS files into CSS.
@@ -454,6 +500,16 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true,
       },
+      chunksSortMode: (a, b) => {
+        console.log(a,b)
+        if (a.entry !== b.entry) {
+          // make sure entry is loaded last so user CSS can override
+          // vendor CSS
+          return b.entry ? -1 : 1
+        } else {
+          return 0
+        }
+      }
     }),
     // Inlines the webpack runtime script. This script is too small to warrant
     // a network request.
