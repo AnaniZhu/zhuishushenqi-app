@@ -40,7 +40,7 @@ class App extends React.Component {
           >
             NavBar
           </NavBar>
-          <Redirect from="/" to="/home" />
+          {/* <Redirect from="/" to="/home" />
           {renderRoutes([
             {
               path: "/home",
@@ -50,7 +50,7 @@ class App extends React.Component {
               path: "/about",
               component: About
             }
-          ])}
+          ])} */}
           {/* <Route path="/about" component={About} /> */}
           <Button type="primary">主要按钮</Button>
           <div

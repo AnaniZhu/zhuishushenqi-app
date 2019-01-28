@@ -6,17 +6,17 @@ const ROUTES = [
   {
     path: '/',
     component: App,
-    // redirect: '/home',
-    // routes: [
-    //   {
-    //     path: '/home',
-    //     component: Home
-    //   },
-    //   {
-    //     path: '/about',
-    //     component: About
-    //   }
-    // ]
+    routes: [
+      {
+        path: '/home',
+        component: Home
+      },
+      {
+        path: '/about',
+        component: About
+      }
+    ]
   }
 ]
+
 export default ROUTES
