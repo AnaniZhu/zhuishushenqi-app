@@ -7,9 +7,12 @@ module.exports = {
   env: {
     browser: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', "react-app"],
+  extends: ['eslint:recommended', 'plugin:react/recommended', "react-app", 'plugin:prettier/recommended'],
   plugins: ['react'],
   rules: {
-    "no-console": 0
+    "no-console": 0,
+    "prettier/prettier": ["error", {
+      "singleQuote": true
+    }]
   }
 }

@@ -1,6 +1,6 @@
-import App from 'pages/App'
-import Home from 'pages/Home'
-import About from 'pages/About'
+import App from 'pages/App';
+import Home from 'pages/Home';
+import About from 'pages/About';
 
 const ROUTES = [
   {
@@ -17,6 +17,6 @@ const ROUTES = [
       }
     ]
   }
-]
+];
 
-export default ROUTES
+export default ROUTES;

@@ -1,20 +1,20 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { HashRouter as Router, Redirect, Route } from "react-router-dom";
-import { matchRoutes, renderRoutes } from "react-router-config";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { HashRouter as Router, Redirect, Route } from 'react-router-dom';
+import { matchRoutes, renderRoutes } from 'react-router-config';
 
-import { NavBar, Icon, TabBar, Button } from "antd-mobile";
+import { NavBar, Icon, TabBar, Button } from 'antd-mobile';
 
-import config from "routes/config";
-import About from "pages/About";
-import Home from "pages/Home";
+import config from 'routes/config';
+import About from 'pages/About';
+import Home from 'pages/Home';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       hidden: false,
-      selectedTab: "blueTab"
+      selectedTab: 'blueTab'
     };
   }
 
@@ -31,7 +31,7 @@ class App extends React.Component {
             onLeftClick={() => window.history.back()}
             rightContent={[
               <Link key="1" to="/home">
-                <Icon key="0" type="search" style={{ marginRight: "16px" }} />
+                <Icon key="0" type="search" style={{ marginRight: '16px' }} />
               </Link>,
               <Link key="2" to="/about">
                 <Icon key="1" type="ellipsis" />
@@ -54,7 +54,7 @@ class App extends React.Component {
           {/* <Route path="/about" component={About} /> */}
           <Button type="primary">主要按钮</Button>
           <div
-            style={{ position: "fixed", height: "100%", width: "100%", top: 0 }}
+            style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}
           >
             <TabBar
               unselectedTintColor="#949494"
@@ -68,28 +68,28 @@ class App extends React.Component {
                 icon={
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: '22px',
+                      height: '22px',
                       background:
-                        "url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat"
+                        'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
                     }}
                   />
                 }
                 selectedIcon={
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: '22px',
+                      height: '22px',
                       background:
-                        "url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat"
+                        'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
                     }}
                   />
                 }
-                selected={this.state.selectedTab === "blueTab"}
+                selected={this.state.selectedTab === 'blueTab'}
                 onPress={() => {
-                  this.props.history.push("/home");
+                  this.props.history.push('/home');
                   this.setState({
-                    selectedTab: "blueTab"
+                    selectedTab: 'blueTab'
                   });
                 }}
                 data-seed="logId"
@@ -100,30 +100,30 @@ class App extends React.Component {
                 icon={
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: '22px',
+                      height: '22px',
                       background:
-                        "url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat"
+                        'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
                     }}
                   />
                 }
                 selectedIcon={
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: '22px',
+                      height: '22px',
                       background:
-                        "url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat"
+                        'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
                     }}
                   />
                 }
                 title="书城"
                 key="书城"
-                selected={this.state.selectedTab === "redTab"}
+                selected={this.state.selectedTab === 'redTab'}
                 onPress={() => {
-                  this.props.history.push("/about");
+                  this.props.history.push('/about');
                   this.setState({
-                    selectedTab: "redTab"
+                    selectedTab: 'redTab'
                   });
                 }}
                 data-seed="logId1"
@@ -134,29 +134,29 @@ class App extends React.Component {
                 icon={
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: '22px',
+                      height: '22px',
                       background:
-                        "url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat"
+                        'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat'
                     }}
                   />
                 }
                 selectedIcon={
                   <div
                     style={{
-                      width: "22px",
-                      height: "22px",
+                      width: '22px',
+                      height: '22px',
                       background:
-                        "url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat"
+                        'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat'
                     }}
                   />
                 }
                 title="排行榜"
                 key="排行榜"
-                selected={this.state.selectedTab === "greenTab"}
+                selected={this.state.selectedTab === 'greenTab'}
                 onPress={() => {
                   this.setState({
-                    selectedTab: "greenTab"
+                    selectedTab: 'greenTab'
                   });
                 }}
               >

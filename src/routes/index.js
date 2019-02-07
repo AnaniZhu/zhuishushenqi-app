@@ -1,17 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
-import { /* matchRoutes, */ renderRoutes } from "react-router-config";
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import { /* matchRoutes, */ renderRoutes } from 'react-router-config';
 
-import config from './config'
+import config from './config';
 
 // const Index = () => <h2>HomeIndex</h2>;
 // const PartOne = () => <h2>Home PartOne</h2>;
 // const PartTwo = () => <h2>Home PartTwo</h2>;
 // const About = () => <h2>About</h2>;
 // const Users = () => <h2>Users</h2>;
-
 
 const ROUTES = (
   <Router>
@@ -26,6 +30,6 @@ const ROUTES = (
     </Switch> */}
     {renderRoutes(config)}
   </Router>
-)
+);
 
-export default ROUTES
+export default ROUTES;
